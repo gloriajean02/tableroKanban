@@ -1,4 +1,149 @@
 * {
+    font-family: 'Poppins', sans-serif;
+    /* outline: 1px solid red; */
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+
+header {
+    text-align: left;
+    padding: 20px;
+}
+
+
+
+body {
+    background-color: #4a3da5;
     margin: 0;
-    padding: 0;
+    padding: 60px;
+    height: 100vh;
+}
+
+
+.contenedor {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    /* Centrado horizontal */
+    align-items: start;
+    /* Centrado vertical */
+}
+
+/* Cada columna */
+.columna {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.columna h2 {
+    color: black;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.columna .tarjeta {
+    display: flex;
+    justify-content: space-between;
+    gap:1rem;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.textArea p {
+    color: black;
+    font-size: 0.8rem;
+}
+
+#toDoColumn .tarjeta {
+    background: #e9b7ffc5;
+}
+
+#doingColumn .tarjeta {
+    background:rgba(255, 140, 0, 0.503);
+}
+
+#doneColumn .tarjeta {
+    background: #b9d44094;
+}
+
+
+.tarjeta:hover {
+    transform: scale(1.02);
+}
+
+.columna .divForm .textArea {
+    display: block;
+    border: solid black 0.5px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: black;
+    min-height: 30px;
+    height: fit-content;
+}
+
+.botonBorrar {
+    max-width: 22px;
+    height: fit-content;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.botonBorrar:hover {
+    transform: scale(1.3);
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.botonAdd {
+    padding: 3px;
+    color:white;
+    background-color: black;
+    border-radius: 8px;
+}
+
+.botonCancelar {
+    font-size: 1.2rem;
+    font-weight: 100;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.botonCancelar:hover {
+    color:red;
+    font-weight: 400;
+}
+
+.nuevaTarjeta {
+    display: flex;
+    justify-content: center;
+}
+
+.nuevaTarjeta a {
+    font-size: 0.9rem;
+    transition: transform 0.10s ease;
+    cursor: pointer;
+}
+
+.nuevaTarjeta a:hover {
+    font-weight: 600;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    font-weight: 200;
+    padding: 60px;
 }
