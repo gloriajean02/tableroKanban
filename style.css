@@ -11,13 +11,17 @@ header {
     padding: 20px;
 }
 
-
+h1 {
+    color:white;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 body {
     background-color: #4a3da5;
-    margin: 0;
-    padding: 60px;
-    height: 100vh;
+    display: grid;
+    margin: 50px 0px;
+    grid-template-rows: auto 1fr auto;
 }
 
 
@@ -163,5 +167,4 @@ footer {
     text-align: center;
     color: white;
     font-weight: 200;
-    padding: 60px;
 }
