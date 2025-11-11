@@ -50,8 +50,17 @@ for (let index = 0; index < columns.length; index++) {
                     <p>${texto}</p>
                 </div>
                 <div class="borrar">
-                    <img src="images/borrar.png" class="botonBorrar">
+                    <img src="images/borrar.png" class="botonBorrar disabled">
                 </div>`;
+        
+        const borrarTarjeta = divTarjeta.querySelector(".botonBorrar");
+        divTarjeta.addEventListener("mouseover", () => {
+            borrarTarjeta.classList.remove("disabled");
+        });
+
+        divTarjeta.addEventListener("mouseleave", () => {
+            borrarTarjeta.classList.add("disabled");
+        });
 
         //Le decimos que va a ser arrastrable, le añadimos id y cómo arrastrarse
         divTarjeta.draggable = true;
@@ -81,7 +90,6 @@ for (let index = 0; index < columns.length; index++) {
         divForm[index].classList.add("disabled");
 
         //Si click en borrar tarjeta, borramos el child de la seccion tarjetas
-        const borrarTarjeta = divTarjeta.querySelector(".botonBorrar");
         borrarTarjeta.addEventListener("click", () => {
             sectionTarjetas[index].removeChild(divTarjeta);
         });

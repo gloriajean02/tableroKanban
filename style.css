@@ -49,19 +49,22 @@ body {
 }
 
 .columna .tarjeta {
+    max-width: 250px;
     display: flex;
     justify-content: space-between;
     gap:1rem;
     border-radius: 8px;
     padding: 10px 15px;
-    margin-bottom: 10px;
+    margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease;
 }
 
 .contenidoTarjeta p {
+    max-width: fit-content;
     color: black;
     font-size: 0.8rem;
+    word-wrap: break-word;
 }
 
 #toDoColumn .tarjeta {
@@ -79,6 +82,7 @@ body {
 
 .tarjeta:hover {
     transform: scale(1.02);
+    padding: 10px 20px 10px 10px;
 }
 
 .columna .divForm .textArea {
@@ -161,9 +165,13 @@ textarea {
 
 .dropzone {
     min-height: 15px;
+    max-height: 300px;
+    overflow-y:auto;
+    margin-bottom: 10px;
 }
 
 footer {
+    margin-top: 20px;
     text-align: center;
     color: white;
     font-weight: 200;
