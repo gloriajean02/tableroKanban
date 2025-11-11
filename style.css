@@ -23,19 +23,17 @@ body {
 
 .contenedor {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-    /* Centrado horizontal */
     align-items: start;
-    /* Centrado vertical */
 }
 
-/* Cada columna */
 .columna {
     background: #fff;
     border-radius: 10px;
     padding: 15px;
-    width: 500px;
+    min-width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,7 +55,7 @@ body {
     transition: transform 0.2s ease;
 }
 
-.textArea p {
+.contenidoTarjeta p {
     color: black;
     font-size: 0.8rem;
 }
@@ -108,10 +106,17 @@ body {
 }
 
 .botonAdd {
-    padding: 3px;
+    padding: 3px 5px;
     color:white;
     background-color: black;
+    border:none;
     border-radius: 8px;
+    cursor: pointer;
+}
+
+.botonAdd:hover {
+    background-color:#4a3da5;
+    transform: scale(1.02);
 }
 
 .botonCancelar {
@@ -126,19 +131,32 @@ body {
     font-weight: 400;
 }
 
-.nuevaTarjeta {
+.divOpenForm {
     display: flex;
     justify-content: center;
 }
 
-.nuevaTarjeta a {
+.divOpenForm a {
     font-size: 0.9rem;
     transition: transform 0.10s ease;
     cursor: pointer;
 }
 
-.nuevaTarjeta a:hover {
+.divOpenForm a:hover {
     font-weight: 600;
+}
+
+textarea {
+    margin: 8px;
+    padding:5px;
+}
+
+.disabled {
+    display: none;
+}
+
+.dropzone {
+    min-height: 15px;
 }
 
 footer {
