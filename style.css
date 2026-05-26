@@ -22,6 +22,44 @@ body {
     display: grid;
     margin: 50px 0px;
     grid-template-rows: auto 1fr auto;
+    transition: background-color 0.6s ease;
+}
+
+.selectorFondo {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    padding: 8px 12px;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.colorFondo {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.colorFondo:hover {
+    transform: scale(1.35);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.colorFondo.activo {
+    border-color: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -51,13 +89,18 @@ body {
 .columna .tarjeta {
     max-width: 250px;
     display: flex;
-    justify-content: space-between;
-    gap:1rem;
+    flex-direction: column;
     border-radius: 8px;
     padding: 10px 15px;
     margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.tarjetaTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .contenidoTarjeta p {
@@ -82,7 +125,67 @@ body {
 
 .tarjeta:hover {
     transform: scale(1.02);
-    padding: 10px 20px 10px 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.paletaColores {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: 0;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding-top 0.25s ease;
+}
+
+.paletaColores.visible {
+    max-height: 30px;
+    opacity: 1;
+    padding-top: 8px;
+}
+
+.colorOpcion {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.colorOpcion:hover {
+    transform: scale(1.45);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes cardEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.93);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cardSalida {
+    to {
+        opacity: 0;
+        transform: scale(0.8) translateY(-8px);
+    }
+}
+
+.tarjeta.animarEntrada {
+    animation: cardEntrada 0.3s ease forwards;
+}
+
+.tarjeta.eliminando {
+    animation: cardSalida 0.22s ease forwards;
+    pointer-events: none;
 }
 
 .columna .divForm .textArea {

@@ -44,22 +44,43 @@ for (let index = 0; index < columns.length; index++) {
 
         //Creamos el div para la tarjeta, le añadimos class e innerHTML
         const divTarjeta = document.createElement('div');
-        divTarjeta.classList.add('tarjeta');
+        divTarjeta.classList.add('tarjeta', 'animarEntrada');
+
+        const colores = ['#e9b7ff', '#ffb7b7', '#b7d6ff', '#fffbb7', '#c8e68a', '#ffd6b7'];
         divTarjeta.innerHTML =
-            `<div class="contenidoTarjeta">
+            `<div class="tarjetaTop">
+                <div class="contenidoTarjeta">
                     <p>${texto}</p>
                 </div>
                 <div class="borrar">
                     <img src="images/borrar.png" class="botonBorrar disabled">
-                </div>`;
-        
+                </div>
+            </div>
+            <div class="paletaColores">
+                ${colores.map(c => `<span class="colorOpcion" style="background:${c}" data-color="${c}"></span>`).join('')}
+            </div>`;
+
+        divTarjeta.addEventListener('animationend', () => {
+            divTarjeta.classList.remove('animarEntrada');
+        }, { once: true });
+
         const borrarTarjeta = divTarjeta.querySelector(".botonBorrar");
+        const paletaColores = divTarjeta.querySelector(".paletaColores");
+
         divTarjeta.addEventListener("mouseover", () => {
             borrarTarjeta.classList.remove("disabled");
+            paletaColores.classList.add("visible");
         });
 
         divTarjeta.addEventListener("mouseleave", () => {
             borrarTarjeta.classList.add("disabled");
+            paletaColores.classList.remove("visible");
+        });
+
+        divTarjeta.querySelectorAll(".colorOpcion").forEach(opcion => {
+            opcion.addEventListener("click", () => {
+                divTarjeta.style.background = opcion.dataset.color;
+            });
         });
 
         //Le decimos que va a ser arrastrable, le añadimos id y cómo arrastrarse
@@ -91,7 +112,10 @@ for (let index = 0; index < columns.length; index++) {
 
         //Si click en borrar tarjeta, borramos el child de la seccion tarjetas
         borrarTarjeta.addEventListener("click", () => {
-            sectionTarjetas[index].removeChild(divTarjeta);
+            divTarjeta.classList.add("eliminando");
+            divTarjeta.addEventListener("animationend", () => {
+                divTarjeta.remove();
+            }, { once: true });
         });
     });
 
@@ -105,6 +129,16 @@ for (let index = 0; index < columns.length; index++) {
     });
 
 }
+
+
+// Selector de color de fondo
+document.querySelectorAll(".colorFondo").forEach(opcion => {
+    opcion.addEventListener("click", () => {
+        document.body.style.backgroundColor = opcion.dataset.color;
+        document.querySelectorAll(".colorFondo").forEach(o => o.classList.remove("activo"));
+        opcion.classList.add("activo");
+    });
+});
 
 
 // Eventos para el funcionamiento de drag & drop
